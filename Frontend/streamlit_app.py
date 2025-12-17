@@ -52,7 +52,7 @@ if generate:
 
     with st.spinner("Building your study command center..."):
         response = requests.post(
-            "https://studypilot-ai.onrender.com/generate-plan",
+            "http://127.0.0.1:5000/generate-plan",
             json={
                 "subject": subject,
                 "exam_date": str(exam_date),
@@ -68,6 +68,16 @@ if generate:
         st.stop()
 
     # ---------------- STATUS BAR ----------------
+    # ---------------- INSIGHTS HEADING ----------------
+    st.markdown("""
+        <div style="margin-top: 30px; margin-bottom: 10px;">
+            <h2 style="color:#e5e7eb; font-weight:700;">
+                📊 Insights
+            </h2>
+        </div>
+    """, unsafe_allow_html=True)
+
+
     days_left = (exam_date - date.today()).days
 
     st.markdown('<div class="card">', unsafe_allow_html=True)
