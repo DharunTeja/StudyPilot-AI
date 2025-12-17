@@ -52,7 +52,7 @@ if generate:
 
     with st.spinner("Building your study command center..."):
         response = requests.post(
-            "http://127.0.0.1:5000/generate-plan",
+            "https://studypilot-ai.onrender.com/generate-plan",
             json={
                 "subject": subject,
                 "exam_date": str(exam_date),
