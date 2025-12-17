@@ -3,6 +3,9 @@ import requests
 from datetime import date
 from pathlib import Path
 
+BACKEND_URL = "https://studypilot-ai.onrender.com"
+
+
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(
     page_title="StudyPilot AI",
@@ -52,15 +55,16 @@ if generate:
 
     with st.spinner("Building your study command center..."):
         response = requests.post(
-            "http://127.0.0.1:5000/generate-plan",
+        f"{BACKEND_URL}/generate-plan",
             json={
                 "subject": subject,
                 "exam_date": str(exam_date),
                 "hours": hours,
                 "study_mode": study_mode
             },
-            timeout=60
-        )
+        timeout=60
+    )
+
         data = response.json()
 
     if "plan" not in data:
@@ -68,7 +72,6 @@ if generate:
         st.stop()
 
     # ---------------- STATUS BAR ----------------
-    # ---------------- INSIGHTS HEADING ----------------
     st.markdown("""
         <div style="margin-top: 30px; margin-bottom: 10px;">
             <h2 style="color:#e5e7eb; font-weight:700;">
