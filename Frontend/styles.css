@@ -1,0 +1,76 @@
+/* GLOBAL */
+.stApp {
+    background-color: #0b0f14;
+    color: #e5e7eb;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.hero h1 {
+    font-size: 46px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #22c55e, #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero p {
+    color: #9ca3af;
+    font-size: 16px;
+}
+
+/* CARD */
+.card {
+    background: #111827;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* METRICS */
+.metric {
+    text-align: center;
+    padding: 18px;
+    border-radius: 14px;
+    background: #020617;
+    font-size: 14px;
+}
+
+/* TIMELINE */
+.timeline-day {
+    border-left: 3px solid #22c55e;
+    padding-left: 20px;
+    margin-bottom: 18px;
+}
+.timeline-revision {
+    border-left: 3px solid #f97316;
+}
+
+/* TAGS */
+.tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.tag-study {
+    background: rgba(34,197,94,0.15);
+    color: #22c55e;
+}
+.tag-revision {
+    background: rgba(249,115,22,0.15);
+    color: #f97316;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    color: #6b7280;
+    margin-top: 40px;
+    font-size: 13px;
+}
