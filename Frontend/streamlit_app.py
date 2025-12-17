@@ -144,11 +144,90 @@ if generate:
             text_lines.append(f"{day.get('day')} - {day.get('focus')}")
 
     # ---------------- DOWNLOAD ----------------
-    st.download_button(
-        "📥 Download Study Plan",
-        data="\n".join(text_lines),
-        file_name="StudyPilot_Study_Plan.txt"
-    )
+        # ---------------- BUILD DETAILED STUDY PLAN TEXT ----------------
+
+    detailed_text = []
+    markdown_text = []
+
+    header = f"""STUDYPILOT AI – STUDY PLAN
+    Subject: {subject}
+    Exam Date: {exam_date}
+    Daily Study Hours: {hours}
+
+    --------------------------------------------------
+    """
+
+    detailed_text.append(header)
+    markdown_text.append(f"# STUDYPILOT AI – STUDY PLAN\n")
+    markdown_text.append(f"**Subject:** {subject}\n")
+    markdown_text.append(f"**Exam Date:** {exam_date}\n")
+    markdown_text.append(f"**Daily Study Hours:** {hours}\n\n---\n")
+
+    for day in data["plan"]:
+        ta = day.get("time_allocation", {})
+
+        # TXT format
+        detailed_text.append(
+            f"""{day['day']}
+    Focus: {day['focus']}
+    Objective: {day['objective']}
+    Concepts:
+    """ + "\n".join(f"- {c}" for c in day["concepts"]) + f"""
+    Activities:
+    """ + "\n".join(f"- {a}" for a in day["activities"]) + f"""
+    Time Allocation:
+    - Concepts: {ta.get('concepts_minutes')} min
+    - Practice: {ta.get('practice_minutes')} min
+    - Revision: {ta.get('revision_minutes')} min
+
+    --------------------------------------------------
+    """
+        )
+
+        # Markdown format
+        markdown_text.append(
+            f"""## {day['day']}
+    **Focus:** {day['focus']}  
+    **Objective:** {day['objective']}
+
+    ### Concepts
+    """ + "\n".join(f"- {c}" for c in day["concepts"]) + """
+
+    ### Activities
+    """ + "\n".join(f"- {a}" for a in day["activities"]) + f"""
+
+    ### Time Allocation
+    - Concepts: {ta.get('concepts_minutes')} min
+    - Practice: {ta.get('practice_minutes')} min
+    - Revision: {ta.get('revision_minutes')} min
+
+    ---
+    """
+        )
+
+    final_txt = "\n".join(detailed_text)
+    final_md = "\n".join(markdown_text)
+
+    st.markdown("## 📥 Download Study Plan")
+
+    c1, c2 = st.columns(2)
+
+    with c1:
+        st.download_button(
+            label="📄 Download as TXT",
+            data=final_txt,
+            file_name="StudyPilot_Study_Plan.txt",
+            mime="text/plain"
+        )
+
+    with c2:
+        st.download_button(
+            label="📝 Download as Markdown",
+            data=final_md,
+            file_name="StudyPilot_Study_Plan.md",
+            mime="text/markdown"
+        )
+
 
 # ---------------- FOOTER ----------------
 st.markdown(
