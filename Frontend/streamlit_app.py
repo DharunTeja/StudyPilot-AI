@@ -9,7 +9,7 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.colors import lightgrey
 
 # ---------------- BACKEND CONFIG ----------------
-BACKEND_URL = "http://127.0.0.1:5000/"
+BACKEND_URL = "https://studypilot-ai.onrender.com"
 
 # ---------------- SESSION STATE ----------------
 if "study_plan" not in st.session_state:
