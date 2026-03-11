@@ -9,13 +9,7 @@ scikit-learn
 pydantic
 pydantic-settings
 motor
-bson
 certifi
-fastapi
-uvicorn
-gunicorn
-python-jose[cryptography]
-passlib[bcrypt]
-bcrypt
 httpx
 python-multipart
+# Simplified requirements for Streamlit UI
