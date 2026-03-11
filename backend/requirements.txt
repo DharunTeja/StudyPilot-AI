@@ -21,9 +21,9 @@ pandas
 scikit-learn
 
 # Security
-PyJWT
-cryptography
+python-jose[cryptography]
 passlib[bcrypt]
+bcrypt
 
 # Utilities
 httpx
